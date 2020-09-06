@@ -1,0 +1,10 @@
+{{> navigation}}
+<h1>Business Page</h1>
+<button type="submit" class="business_all" name="all_business">All Business</button>
+<button class="business_add" name="add_new_business">Add New Business</button>
+<button class="business_find" name="Find_business">Find Specific Business</button>
+<button class="business_update" name="update_business">Update Business</button>
+
+{{#iterate data}}
+    {{this}}
+{{/iterate}}

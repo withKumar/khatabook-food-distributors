@@ -1,0 +1,1 @@
+const invoice = require('../models/invoice.model');
