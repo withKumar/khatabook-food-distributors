@@ -24,7 +24,11 @@ app.use(logger('dev'));
 
 //handlebars setup
 
-app.engine('hbs', exphbs({ extname : 'hbs' }));
+app.engine('hbs', exphbs({
+    extname : '.hbs',
+    defaultLayout : 'main',
+    helpers : require('./public/js/helper.js')
+}));
 app.set('view engine', 'hbs');
 
 //Routes
