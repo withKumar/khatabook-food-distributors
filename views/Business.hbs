@@ -1,10 +1,32 @@
 {{> navigation}}
 <h1>Business Page</h1>
-<button type="submit" class="business_all" name="all_business">All Business</button>
-<button class="business_add" name="add_new_business">Add New Business</button>
-<button class="business_find" name="Find_business">Find Specific Business</button>
-<button class="business_update" name="update_business">Update Business</button>
+<button type="submit" class="business_all" name="all_business" onclick="allBusiness()">All Business</button>
+<button type="submit" class="business_add" name="add_new_business" onclick="add_new_business()">Add New Business</button>
+<button type="submit" class="business_find" name="Find_business" onclick="find_business()">Find Specific Business</button>
+<button type="submit" class="business_update" name="update_business" onclick="update_business()">Update Business</button>
 
 {{#each data}}
     {{this}}</br>
 {{/each}}
+
+{{#if myBusiness}}
+    //In Case True
+{{else}}
+    //Incase falsy
+{{/if}}
+
+<script>
+    let myBusiness = false
+    function allBusiness(){
+        $('myBusiness').toggle();
+    }
+    function add_new_business(){
+        console.log('Add New Business Clicked');
+    }
+    function find_business(){
+        console.log('Find Business Clicked');
+    }
+    function update_business(){
+        console.log('Update Business Clicked');
+    }
+</script>
