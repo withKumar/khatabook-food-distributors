@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Business = require('../controller/Business.Controller');
+const businessModel = require('../models/business.models');
 
 let myData = ['America', 'Germany', 'India', 'Russia']
 
@@ -11,10 +12,16 @@ router.use((req, res, next) => {
 router
     .route('/')
     .get((req, res) => {
-        res.render('Business', 
-        {
-            data : myData
-        });
+        res.render('Business')
+    })
+
+router
+    .route('/all')
+    .post((req, res) => {
+        businessModel.find()
+            .then(res => {
+                console.log(res);
+            })
     })
 
 router

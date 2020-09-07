@@ -1,32 +1,86 @@
 {{> navigation}}
+<div class="container">
+<h1>HERE WE WORK ON BUSINESS ONLY</h1>
 <h1>Business Page</h1>
-<button type="submit" class="business_all" name="all_business" onclick="allBusiness()">All Business</button>
-<button type="submit" class="business_add" name="add_new_business" onclick="add_new_business()">Add New Business</button>
-<button type="submit" class="business_find" name="Find_business" onclick="find_business()">Find Specific Business</button>
-<button type="submit" class="business_update" name="update_business" onclick="update_business()">Update Business</button>
 
-{{#each data}}
-    {{this}}</br>
-{{/each}}
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'allBiz')">All Business</button>
+  <button class="tablinks" onclick="openCity(event, 'newBiz')">Add New Business</button>
+  <button class="tablinks" onclick="openCity(event, 'specBiz')">Find Specific Business</button>
+  <button class="tablinks" onclick="openCity(event, 'updtBiz')">Update Business</button>
+</div>
 
-{{#if myBusiness}}
-    //In Case True
-{{else}}
-    //Incase falsy
-{{/if}}
+<!-- Tab content -->
+<div id="allBiz" class="tabcontent">
+  <h3>All Business List</h3>
+  <button type="submit" onclick="fetch()">Fetch</button>
+  {{#each data}}
+    {{this}}
+  {{/each}}
+</div>
+
+<div id="newBiz" class="tabcontent">
+  <h3>Add New Business</h3>
+  <p>Add New Business</p>
+</div>
+
+<div id="specBiz" class="tabcontent">
+  <h3>Find Specific Business</h3>
+  <p>Find Specific Business</p>
+</div>
+
+<div id="updtBiz" class="tabcontent">
+  <h3>Update Business</h3>
+  <p>Update Business</p>
+</div>
 
 <script>
-    let myBusiness = false
-    function allBusiness(){
-        $('myBusiness').toggle();
-    }
-    function add_new_business(){
-        console.log('Add New Business Clicked');
-    }
-    function find_business(){
-        console.log('Find Business Clicked');
-    }
-    function update_business(){
-        console.log('Update Business Clicked');
-    }
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+
+    $(document).ready(function(){
+        $('.tabcontent').hide();
+        
+        fetch(){
+            
+        }
+
+        console.log('I am Ready for Execution');
+
+        $(document).on('click', (e) => {
+            console.log(e.target.name);
+            if(e.target.name === 'all_business'){
+                console.log('I am Detected');
+                $()
+            } else {
+                console.log('I am uncovered');
+            }
+
+            
+
+        })
+
+
+    })
+
 </script>
+</div>
