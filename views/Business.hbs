@@ -4,7 +4,7 @@
 
   <!-- Tab links -->
   <div class="tab">
-    <button class="tablinks" name ="all_business" onclick="openCity(event, 'allBiz')">All Business</button>
+    <button class="tablinks active" name ="all_business" onclick="openCity(event, 'allBiz')">All Business</button>
     <button class="tablinks" onclick="openCity(event, 'newBiz')">Add New Business</button>
     <button class="tablinks" onclick="openCity(event, 'specBiz')">Find Specific Business</button>
     <button class="tablinks" onclick="openCity(event, 'updtBiz')">Update Business</button>
@@ -17,9 +17,13 @@
     {{#each data}}
       {{this}}
     {{/each}}
+    <div class="show">
+      {{> allBusiness receivedData}}
+    </div>
+    
   </div>
 
-  <div id="newBiz" class="tabcontent">
+  <div id="newBiz" class="tabcontent active">
     <h3>Add New Business</h3>
     <p>Add New Business</p>
   </div>
@@ -58,13 +62,13 @@
           }
 
       $(document).ready(function(){
-        const xhr = new XMLHttpRequest();
 
           $('.tabcontent').hide();
 
           console.log('I am Ready for Execution');
 
-          $(document).on('click', (e) => {
+          //commented section is just a event trigerer//
+          {{!--$(document).on('click', (e) => {
               console.log(e);
               if(e.target.name === 'all_business'){
                   console.log('I am Detected');
@@ -72,7 +76,8 @@
               } else {
                   console.log('I am uncovered');
               }
-          })
+          })--}}
+      
       })
 
       function fetch(){
@@ -81,12 +86,23 @@
 
             xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert(xhr.responseText);
+                console.log(xhr.status);
                 }
             }
             xhr.open('GET', '/business/all', true);
             xhr.send();
+
+            xhr.onload = () => {
+              
+              const data = JSON.parse(xhr.response);
+              console.log(data);
+              console.log(typeof data);
+            }
+
+
           }
+
+          
 
   </script>
 </div>
