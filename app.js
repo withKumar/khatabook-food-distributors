@@ -2,7 +2,7 @@ const Express = require('express');
 const logger = require('morgan');
 
 
-//require('./db');
+require('./db');
 
 //route Definations
 const BusinessRoute = require('./routes/business.route');
@@ -16,6 +16,7 @@ const exphbs = require('express-handlebars');
 
 const app = Express();
 
+app.use(Express.static(__dirname + '/public'));
 app.use(Express.urlencoded({ extended : true }));
 app.use(Express.json());
 

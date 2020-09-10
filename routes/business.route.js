@@ -17,10 +17,15 @@ router
 
 router
     .route('/all')
-    .post((req, res) => {
+    .get((req, res) => {
         businessModel.find()
-            .then(res => {
-                console.log(res);
+            .then(response => {
+                res.json({
+                    data : response
+                });
+            })
+            .catch(err => {
+                console.log(err);
             })
     })
 
